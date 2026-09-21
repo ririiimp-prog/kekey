@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>For My Favorite Person ♡</title>
+
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #f9dce8, #e5dcff);
+    color: #554457;
+    overflow-x: hidden;
+}
+
+/* BACKGROUND */
+
+.bg {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.bubble {
+    position: absolute;
+    bottom: -50px;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: rgba(255,255,255,.55);
+    animation: naik 8s linear infinite;
+}
+
+.bubble:nth-child(1) {
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.bubble:nth-child(2) {
+    left: 25%;
+    animation-delay: 2s;
+}
+
+.bubble:nth-child(3) {
+    left: 45%;
+    animation-delay: 4s;
+}
+
+.bubble:nth-child(4) {
+    left: 70%;
+    animation-delay: 1s;
+}
+
+.bubble:nth-child(5) {
+    left: 90%;
+    animation-delay: 3s;
+}
+
+@keyframes naik {
+    0% {
+        transform: translateY(0);
+        opacity: 0;
+    }
+
+    20% {
+        opacity: .8;
+    }
+
+    100% {
+        transform: translateY(-110vh);
+        opacity: 0;
+    }
+}
+
+
+/* HALAMAN AWAL */
+
+.container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 25px;
+}
+
+.opening {
+    text-align: center;
+    animation: masuk 1s ease;
+}
+
+@keyframes masuk {
+    from {
+        opacity: 0;
+        transform: scale(.8);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.small {
+    font-size: 12px;
+    letter-spacing: 3px;
+    margin-bottom: 20px;
+    opacity: .7;
+}
+
+.opening h1 {
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.opening p {
+    font-size: 14px;
+    margin-bottom: 25px;
+}
+
+
+/* AMPLOP */
+
+.envelope {
+    width: 190px;
+    height: 125px;
+    background: #fff;
+    margin: 0 auto 25px;
+    position: relative;
+    border-radius: 8px;
+    box-shadow: 0 15px 35px rgba(120,80,120,.2);
+    cursor: pointer;
+    transition: .4s;
+}
+
+.envelope:hover {
+    transform: translateY(-8px);
+}
+
+.envelope:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    border-left: 95px solid transparent;
+    border-right: 95px solid transparent;
+    border-top: 65px solid #f3bdd2;
+    z-index: 2;
+}
+
+.envelope:after {
+    content: "♡";
+    position: absolute;
+    font-size: 32px;
+    color: white;
+    left: 50%;
+    top: 42px;
+    transform: translateX(-50%);
+    z-index: 3;
+}
+
+button {
+    border: none;
+    padding: 14px 28px;
+    border-radius: 50px;
+    background: #d88aaa;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(150,90,120,.25);
+}
+
+button:active {
+    transform: scale(.94);
+}
+
+
+/* PESAN */
+
+.message {
+    display: none;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    animation: muncul 1.2s ease;
+}
+
+.message.show {
+    display: block;
+}
+
+@keyframes muncul {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* FOTO */
+
+.photo {
+    width: 145px;
+    height: 145px;
+    margin: 0 auto 18px;
+    padding: 5px;
+    background: white;
+    border-radius: 50%;
+    box-shadow: 0 12px 35px rgba(100,70,100,.25);
+    animation: floating 3s ease-in-out infinite;
+}
+
+.photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+@keyframes floating {
+
+    0%,100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-7px);
+    }
+}
+
+.message h2 {
+    font-size: 23px;
+    margin-bottom: 5px;
+}
+
+.from {
+    font-size: 12px;
+    opacity: .65;
+    margin-bottom: 18px;
+}
+
+
+/* KOTAK CHAT */
+
+.text-box {
+    background: rgba(255,255,255,.7);
+    backdrop-filter: blur(10px);
+    border-radius: 23px;
+    padding: 20px;
+    text-align: left;
+    box-shadow: 0 12px 35px rgba(120,90,130,.12);
+}
+
+.text {
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+
+/* TYPING */
+
+.cursor {
+    display: inline-block;
+    width: 2px;
+    height: 15px;
+    background: #554457;
+    animation: kedip .7s infinite;
+}
+
+@keyframes kedip {
+    50% {
+        opacity: 0;
+    }
+}
+
+
+/* BAWAH */
+
+.end {
+    margin-top: 18px;
+    font-size: 13px;
+    line-height: 1.6;
+    opacity: .8;
+}
+
+.heart {
+    font-size: 25px;
+    margin-top: 8px;
+    animation: heart 1.2s infinite;
+}
+
+@keyframes heart {
+    50% {
+        transform: scale(1.2);
+    }
+}
+
+.hidden {
+    display: none;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- BACKGROUND -->
+<div class="bg">
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+</div>
+
+
+<div class="container">
+
+    <!-- OPENING -->
+
+    <div class="opening" id="opening">
+
+        <div class="small">
+            A LITTLE MESSAGE FOR YOU
+        </div>
+
+        <div class="envelope" onclick="openMessage()"></div>
+
+        <h1>Untuk pacarku 🤍</h1>
+
+        <p>
+            Ada sesuatu dari Riri Cantip buat kamu...
+        </p>
+
+        <button onclick="openMessage()">
+            Buka pesannya ♡
+        </button>
+
+    </div>
+
+
+    <!-- PESAN -->
+
+    <div class="message" id="message">
+
+        <div class="photo">
+            <img src="fii.jpg" alt="Foto kamu">
+        </div>
+
+        <h2>Haiii sayanggkuu 🤍</h2>
+
+        <div class="from">
+            — dari Riri Cantip ♡
+        </div>
+
+        <div class="text-box">
+
+            <div class="text" id="typing"></div>
+
+        </div>
+
+        <div class="end">
+            jangan pernah merasa sendiri ya sayangg,
+            ada aku di sini selalu. 🥺🤍
+            
+            <div class="heart">
+                ♡
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+const pesan = `ini hari gimanaa sayangg?? 🥺
+
+by the way, gimanaa kerjaannya tadi?
+
+kamu pasti cape bangett yaa...
+sini aku pelukkk 🤗
+
+karena pacar aku pasti cape
+habis bertarung seharian dengan
+pekerjaan, isi otaknya dan fisiknyaa
+hum :3
+
+sayang kalo kamu cape dan mau cerita
+hari kamu ke aku bolehh-boleh ajaa kok.
+
+aku malah seneng kalo kamu mau berbagi.
+setidaknya bisa meringankan beban kamu
+setelah seharian bekerja keras.
+
+percayaa dehh,
+kalo kamu ceritain hari kamu,
+capenya kamu hari ini bakal ilang
+karena kamu udah mau berbagi
+sama seseorang...
+
+dan orang itu aku. 🥺🤍
+
+aku seneng banget kalo kamu bisa
+menceritakan hari-hari kamu.
+
+jangan pernah merasa sendiri ya sayanggku,
+ada aku di sini selalu.
+
+lovyuuu,
+kalo kamu butuh aku,
+just call mee yaa babyy gantengkuuu.
+
+mwa mwa mwa :3 ♡`;
+
+
+function openMessage() {
+
+    document.getElementById("opening").classList.add("hidden");
+
+    document.getElementById("message").classList.add("show");
+
+    mulaiTyping();
+
+}
+
+
+function mulaiTyping() {
+
+    const tulisan = document.getElementById("typing");
+
+    let i = 0;
+
+    function ketik() {
+
+        if (i < pesan.length) {
+
+            if (pesan[i] === "\n") {
+                tulisan.innerHTML += "<br>";
+            } else {
+                tulisan.innerHTML += pesan[i];
+            }
+
+            i++;
+
+            setTimeout(ketik, 25);
+
+        } else {
+
+            tulisan.innerHTML +=
+                '<span class="cursor"></span>';
+
+        }
+
+    }
+
+    ketik();
+
+}
+
+</script>
+
+</body>
+</html>
